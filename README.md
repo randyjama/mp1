@@ -85,11 +85,11 @@ An encoding of the string `aaassddddffg` is the string `3a2s4d2f1g`. Along these
 
 ### Opening a new project in Eclipse
 
-Once you have cloned the repository, you can create a new Eclipse project for this machine problem. Before you do that, to ensure that Gradle and Eclipse can work together. In the folder that contains your repository, use the terminal window or Git Bash and execute `gradle eclipse`.
+Once you have cloned the repository, you can import a Gradle project for this machine problem. Before you do that, to ensure that Gradle and Eclipse can work together. In the folder that contains your repository, use the terminal window or Git Bash and execute `gradle eclipse`.
 
-Now start Eclipse and then select the following menu item: `File -> New -> Project...`. You should then pick `Gradle Project`. You will be asked to provide a project name, and the directory that contains the repository you cloned.
+Now start Eclipse and then select the following menu item: `File -> Import... -> Existing Gradle Project...`. You will be the directory that contains the repository you cloned.
 
-Note that you can compile and run tests on your from Eclipse or you can run `gradle check` from the command line.
+Note that you can compile and run tests on your from Eclipse *or* you can run `gradle check` from the command line.
 
 ### Implementing the required methods
 

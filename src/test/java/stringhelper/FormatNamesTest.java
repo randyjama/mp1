@@ -29,7 +29,7 @@ public class FormatNamesTest {
 
 	@Test
 	public void test5() {
-		assertEquals("Fa,,, CC C. C. C. ,. ,.", StringUtility.formatName("cc c c cC , ,,  fa,,  "));
+		assertEquals("Fa,,, Cc C. C. C. ,. ,.", StringUtility.formatName("cc c c cC , ,,  fa,,  "));
 	}
 
 	@Test

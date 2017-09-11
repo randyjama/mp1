@@ -81,11 +81,13 @@ An encoding of the string `aaassddddffg` is the string `3a2s4d2f1g`. Along these
 ``git clone https://github.com/CPEN-221/f17-mp1-GSathish``
 (Remember to replace `GSathish` with your GitHub username.)
 
+1. The `git clone` operation will create a repository on your computing system and this repository would be in a subfolder named `f17-mp1-<github username>` in the directory/folder where you invoked the `git clone` command. If you do not know which directory you are in when you call the `git clone` operation, you can use the `pwd` command (in your terminal window/Git Bash) which will tell you what the present working directory is.
+
 ### Opening a new project in Eclipse
 
-Once you have cloned the repository, you can create a new Eclipse project for this machine problem.
+Once you have cloned the repository, you can create a new Eclipse project for this machine problem. Before you do that, to ensure that Gradle and Eclipse can work together. In the folder that contains your repository, use the terminal window or Git Bash and execute `gradle eclipse`.
 
-You do this by starting Eclipse and then selecting the following menu item: `File -> New -> Java Project`. You will be asked to provide a project name, and if you had cloned files to the correct location then you can simply enter `f16-mp0-<your username>` (replace `<your username>` appropriately) as the project name and Eclipse will auto-complete the remaining entries in the `New Project` window, and you can select `Finish`.
+Now start Eclipse and then select the following menu item: `File -> New -> Project...`. You should then pick `Gradle Project`. You will be asked to provide a project name, and the directory that contains the repository you cloned.
 
 ### Implementing the required methods
 
@@ -97,7 +99,7 @@ Implement the methods requested. You should find this part of the task easy if y
 
 ## Submitting your work
 
-To submit source code, from the `f17-mp0-<your username>` directory, use the following `git` commands:
+To submit source code, from the `f17-mp1-<your username>` directory, use the following `git` commands:
 
 ```git
 git add src/*
@@ -105,6 +107,6 @@ git commit -m "MP1 submission"
 git push
 ```
 
-You can push your work to GitHub as many times as you want until the assignment deadline. We recommend that you commit and push your work to GitHub regularly (with every significant change to your source code). Only your final submission will be used for marking.
+You can push your work to GitHub as many times as you want until the assignment deadline. We recommend that you commit and push your work to GitHub regularly (with every significant change to your source code) so that you have a history of changes and a backup in case your own device fails. Only your final submission will be used for marking. (You can also change the git commit message each time to something more meaningful than just "MP1 submission".)
 
 > Note that the `git` commands in the previous step were provided as an example. You should get comfortable with using `git` as the situation demands.

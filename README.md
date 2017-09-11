@@ -89,6 +89,8 @@ Once you have cloned the repository, you can create a new Eclipse project for th
 
 Now start Eclipse and then select the following menu item: `File -> New -> Project...`. You should then pick `Gradle Project`. You will be asked to provide a project name, and the directory that contains the repository you cloned.
 
+Note that you can compile and run tests on your from Eclipse or you can run `gradle check` from the command line.
+
 ### Implementing the required methods
 
 When you open up the project in Eclipse, in the Package Explorer frame you should see a [package](https://docs.oracle.com/javase/tutorial/java/package/packages.html): `stringhelper`.
@@ -96,6 +98,8 @@ When you open up the project in Eclipse, in the Package Explorer frame you shoul
 You will have to implement the required methods in this package. The exact file where you will write code is `StringUtility.java`. The methods that you will have to implement will have a comment that starts with `TODO`. You may also notice that Eclipse marks up these comments in a special manner near the line numbers.
 
 Implement the methods requested. You should find this part of the task easy if you are comfortable with iterative structures (`for` loops, for example) and conditional structures (`if` statements) in a language like C. Remember to read the Java documentation for `String`.
+
+You can test your work by selecting the testcases in the `src/test/java` folder and running them as JUnit tests. These are the tests we will use to evaluate your submission and proper implementations that pass all these tests will get full credit. (You will not get credit for hard-coded programs that only pass these tests.)
 
 ## Submitting your work
 

@@ -25,6 +25,16 @@ In this assignment, you will implement methods for the following string manipula
 
 A [palindrome](https://en.wikipedia.org/wiki/Palindrome) is a string that reads the same even after it is reversed. Some popular examples are *redivider*, *civic*, *kayak* and *noon*. Longer phrases such as *madamimadam* and *madam i madam* are also palindromes. For the purposes of this assignment, we will be case-sensitive: *Kayak* is not a palindorme while *kayak* and *KayaK* are palindromes.
 
+### Check if a substring of a string is a palindrome
+
+Determine if at least one substring of a string (a substring of size at least 2) is a palindrome or not.
+
+Some examples:
+
+* 'abba' would return true because it is a palindrome.
+* 'dabba' would also return true because 'abba' is a substring that is a palindrome.
+* 'decorum' would return 'false' because it is not a palindrome and no substring of length >= 2 is a palindrome.
+
 ### Count the number of times a query string occurs in a string
 
 * Suppose our source string is `Luke Skywalker` and the query string is `ke` then the method should return 2.
@@ -63,12 +73,12 @@ An encoding of the string `aaassddddffg` is the string `3a2s4d2f1g`. Along these
 
 ### Grabbing the Starter Code
 
-1. Use this [https://classroom.github.com/assignment-invitations/ba244f30d53884c1c4196e6ff580a706](https://classroom.github.com/assignment-invitations/ba244f30d53884c1c4196e6ff580a706) link to create a new private repository in the `CPEN-221` GitHub organization. You will have read/write access to this repository and the repository will be initialized with this `README` as well as with the starter code. The repository that will be created will have a URL that will be something like `https://github.com/CPEN-221/f16-mp0-GSathish` (except that `GSathish` will be replaced by your GitHub username).
+1. Use this [GitHub Classroom link](https://classroom.github.com/a/0YwNTU1p) to create a new private repository in the `CPEN-221` GitHub organization. You will have read/write access to this repository and the repository will be initialized with this `README` as well as with the starter code. The repository that will be created will have a URL that will be something like `https://github.com/CPEN-221/f17-mp1-GSathish` (except that `GSathish` will be replaced by your GitHub username).
 
 1. You will start work by obtaining the initial code provided in this GitHub repository. To do so, open up a terminal (on a Linux or Mac OS X system) or Git Bash (on a Windows system), and then change your working directory to the workspace directory for the Eclipse Workspace. You can use the `cd` command to achieve this.
 
 1. Once you have changed your working directory to the Eclipse workspace directory, you can clone the repository that was created for you using the `git clone` command. For example:
-``git clone https://github.com/CPEN-221/f16-mp0-GSathish``
+``git clone https://github.com/CPEN-221/f17-mp1-GSathish``
 (Remember to replace `GSathish` with your GitHub username.)
 
 ### Opening a new project in Eclipse

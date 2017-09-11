@@ -45,4 +45,9 @@ public class PalindromicSubstringTest {
 	public void test8() {
 		assertEquals(false, StringUtility.hasPalindromicSubstring("ab"));
 	}
+	
+	@Test
+	public void test9() {
+		assertEquals(true, StringUtility.hasPalindromicSubstring("where ama i deed?>"));
+	}
 }

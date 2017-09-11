@@ -34,6 +34,25 @@ public class StringUtility {
 	}
 
 	/**
+	 * Return true if str is a palindrome or if it contains a smaller substring
+	 * of length >=2 that is a palindrome.
+	 * 
+	 * Examples: 'abba' would return true because it is a palindrome. 'dabba'
+	 * would also return true because 'abba' is a substring that is a
+	 * palindrome. 'decorum' would return 'false' because it is not a palindrome
+	 * and no substring of length >= 2 is a palindrome.
+	 * 
+	 * @param str
+	 *            is not null
+	 * @return true if str has a substring with at least two characters that is
+	 *         a palindrome and false otherwise.
+	 */
+	public static boolean hasPalindromicSubstring(String str) {
+		// TODO: Implement this method
+		return false;
+	}
+
+	/**
 	 * Return the number of times query occurs as a substring of mainString (the
 	 * different occurrences may overlap). Precondition: query is not null and
 	 * query is not the empty string "". Examples: For mainString = "ab", query

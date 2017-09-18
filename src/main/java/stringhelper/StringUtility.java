@@ -1,6 +1,7 @@
 package stringhelper;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class StringUtility {
 
@@ -24,13 +25,29 @@ public class StringUtility {
 	 *            is not null
 	 * @return true if str is a palindrome and false otherwise
 	 */
+	
+	//MAYBE TRY ONE ARRAY THEN JUST COMPARE THE FIRST AND LAST INDEX THEN MEET IN THE MIDDLE
 	public static boolean isPalindrome(String str) {
-		// Do not visit each character of the string more than once
-		// each.
-
-		// TODO: Implement this method
-
-		return false;
+		// Do not visit each character of the string more than once each.
+		
+		char [] charArray = str.toCharArray();
+		int i = 0;
+		int j = charArray.length-1;
+		if(charArray.length == 0) { //check for specific case of an array with length 0
+			return true;
+		}
+		else {
+			while (i <= charArray.length / 2) {
+				if (charArray[i] == charArray[j]) { //checks both ends of the array, moving toward the center
+					i++;
+					j--;
+				}
+				else { //if the 2 ends of the string being checked do not match, string is NOT palindrome
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -49,6 +66,31 @@ public class StringUtility {
 	 */
 	public static boolean hasPalindromicSubstring(String str) {
 		// TODO: Implement this method
+
+		char [] charArray = str.toCharArray();
+		int i = 0; //i and j track the 2 ends of the array that will be check for matched characters
+		int j = charArray.length - 1;
+		//k and l are used for checking a palindrome once a match in the array characters is found
+
+		//??? HOW TO RETURN TRUE/FALSE
+		//??? WHAT IF GIVEN PALINDROME OF A SINGLE OR NO CHARACTERS
+		//??? ISSUE WITH CONTINUING TO CHECK FOR MATCHES AFTER A PALINDROME ISNT FOUND AFTER A MATCH
+		for (i = 0; i <= charArray.length; i++) {
+			if(charArray[i] == charArray[j] && j - i <= 2) { //match found, begin palindrome check
+				int k = i;
+				int l = j;
+				for (int m = j-i; m < 0; m--) { //loop for palindrome check
+					if (charArray[k] == charArray[l]) {
+						k++;
+						l--;
+						}
+					else {
+						break;
+					}
+				}
+			}
+			j--;
+		}
 		return false;
 	}
 
@@ -64,9 +106,44 @@ public class StringUtility {
 	 *            is not null and neither is it the empty string
 	 * @return a count of the number of times query appears in mainString
 	 */
+	
 	public static int countOccurrences(String mainString, String query) {
 		// TODO: Implement this method
-		return -1;
+		
+		char [] arrayMain = mainString.toCharArray();
+		char [] arrayQuery = query.toCharArray();
+		int i=0;
+		int j=0;
+		int k=0;
+		int l=0;
+		int result = 0;
+		
+		//if length of query is greater than mainString, immediately return 0;
+		if(arrayMain.length < arrayQuery.length) {
+			return 0;
+		}
+		
+		for (i=0; i < arrayMain.length; i++) { //begin checking arrayMain for match with query's first character
+			if (arrayMain[i] == arrayQuery[0]) { //match is found
+				l=0;
+				k=i;
+				while (arrayMain[k] == arrayQuery[l] && l < arrayQuery.length && k < arrayMain.length) { //last 2 conditions are to make sure you don't go past the array size
+					k++;
+					l++;
+					if (l == arrayQuery.length) { //if chars matched through the whole query check, increment result
+						result++;
+ 						i = i + arrayQuery.length; //prevents reading a repeated query more than once in mainString
+					}
+				}
+			}
+		}
+		
+		return result; 
+	}
+
+	private static boolean Contains(String mainString, String query) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	/**
@@ -81,7 +158,7 @@ public class StringUtility {
 	 * in lower case.
 	 * 
 	 * Some examples: sathish gopalakrishnan should result in Gopalakrishnan,
-	 * Sathish Matei Radu Ripeanu should result in Ripeanu, Matei R. John Ronald
+	 * Sathish. Matei Radu Ripeanu should result in Ripeanu, Matei R. John Ronald
 	 * reuel Tolkien should result in Tolkien, John R. R. Arvind should result
 	 * in Arvind (this is a special case when there is only one word in the
 	 * string)
@@ -105,8 +182,29 @@ public class StringUtility {
 		 * This task can be solved by selecting appropriate methods in the
 		 * String class and then using if statements.
 		 */
-
 		// TODO: Implement this method
+		
+		char [] name = nameStr.toCharArray();
+		char [] firstName = null;
+		
+		//find first word
+		for (int i = 0; i < name.length; i++)
+		{
+			if (name[i] != ' ') {
+				while (name[i] != ' ') {
+					firstName[i] = name[i];
+					i++;
+				}
+			}
+			else { //end of name is reached
+				firstName[i] = ',';
+				firstName[i+1] = ' ';
+				break;
+			}
+		}
+		//format first word
+		
+		
 		return null;
 	}
 
@@ -133,8 +231,56 @@ public class StringUtility {
 		// You might need to first convert the string to an array of
 		// characters, and then use a function from class
 		// [`Arrays`](http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html).
-
-		return false;
+		char [] charString1 = s1.toCharArray();
+		char [] charString2 = s2.toCharArray();
+		int [] intString1 = new int[charString1.length];
+		int [] intString2 = new int[charString2.length];
+		int temp;
+		
+		//convert char arrays to int arrays
+		for (int i = 0; i < charString1.length; i++) {
+			intString1 [i] = charString1[i];
+		}
+		
+		for (int i=0; i < charString2.length; i++) {
+			intString2 [i] = charString2[i];
+		}
+		
+		//if the arrays aren't the same length, immediately not anagrams
+		if (intString1.length != intString2.length) {
+			return false;
+		}
+		
+		//begin sorting intString1
+        for (int i = 0; i < intString1.length; i++) { //loop structure taken from http://www.sanfoundry.com/java-program-sort-array-ascending-order/
+            for (int j = i + 1; j < intString1.length; j++) {
+                if (intString1[i] > intString1[j]) {
+                	temp = intString1[i];
+                    intString1[i] = intString1[j];
+                    intString1[j] = temp;
+                }
+            }
+        }
+        
+		//begin sorting intString2
+        for (int i = 0; i < intString2.length; i++) { //loop structure taken from http://www.sanfoundry.com/java-program-sort-array-ascending-order/
+            for (int j = i + 1; j < intString2.length; j++) {
+                if (intString2[i] > intString2[j]) {
+                	temp = intString2[i];
+                    intString2[i] = intString2[j];
+                    intString2[j] = temp;
+                }
+            }
+        }
+        
+        //begin comparison
+        for (int i = 0; i < intString1.length; i++) {
+        	if (intString1[i] != intString2[i]) {
+        		return false;
+        	}
+        }
+        
+		return true;
 	}
 
 	/**
@@ -157,7 +303,26 @@ public class StringUtility {
 		 * and to change c into a String you may have to concatenate it with the
 		 * empty String. This function will probably need a nested loop
 		 */
-
-		return null;
+		String result = "";
+		
+		for (int i = 0; i < encstr.length(); i++) {
+			int j = Character.getNumericValue(encstr.charAt(i)); //get numerical
+			char k = encstr.charAt(i+1); //get character
+			for (int l = 0; l < j; l++) {
+				result += k; //list character into result j times
+			}
+			i++; //increment i again to skip the character part's of the encoded string
+		}
+		
+		return result;
 	}
 }
+
+
+
+
+
+
+
+
+

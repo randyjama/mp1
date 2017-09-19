@@ -143,8 +143,8 @@ public class StringUtility {
 					l++;
 					if (l == arrayQuery.length) { //if chars matched through the whole query check, increment result
  						result++;
-						i = i + arrayQuery.length - 1; //prevents reading a repeated query more than once in mainString
- 						return result;
+						i = i + arrayQuery.length; //prevents reading a repeated query more than once in mainString
+						break;
 					}
 				}
 			}

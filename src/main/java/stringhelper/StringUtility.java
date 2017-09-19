@@ -71,12 +71,18 @@ public class StringUtility {
 		int i = 0; //i and j track the 2 ends of the array that will be check for matched characters
 		int j = charArray.length - 1;
 		//k and l are used for checking a palindrome once a match in the array characters is found
-
+		
+		//if charArray's length is <2 then it immediately fails the test
+		if (charArray.length < 2) {
+			return false;
+		}
+		
 		//??? HOW TO RETURN TRUE/FALSE
 		//??? WHAT IF GIVEN PALINDROME OF A SINGLE OR NO CHARACTERS
 		//??? ISSUE WITH CONTINUING TO CHECK FOR MATCHES AFTER A PALINDROME ISNT FOUND AFTER A MATCH
-		for (i = 0; i <= charArray.length; i++) {
-			if(charArray[i] == charArray[j] && j - i <= 2) { //match found, begin palindrome check
+		for (i = 0; i <= j; i++) {
+			if(charArray[i] == charArray[j] && 1 + j - i <= 2) { //match found, begin palindrome check
+				//1+j-i is the substring length
 				int k = i;
 				int l = j;
 				for (int m = j-i; m < 0; m--) { //loop for palindrome check
@@ -90,8 +96,13 @@ public class StringUtility {
 				}
 			}
 			j--;
+			if(i == j) { //must check index of i and j in array
+				return false;
+			}
 		}
-		return false;
+		
+		return true;
+
 	}
 
 	/**
@@ -109,7 +120,7 @@ public class StringUtility {
 	
 	public static int countOccurrences(String mainString, String query) {
 		// TODO: Implement this method
-		
+
 		char [] arrayMain = mainString.toCharArray();
 		char [] arrayQuery = query.toCharArray();
 		int i=0;
@@ -127,12 +138,13 @@ public class StringUtility {
 			if (arrayMain[i] == arrayQuery[0]) { //match is found
 				l=0;
 				k=i;
-				while (arrayMain[k] == arrayQuery[l] && l < arrayQuery.length && k < arrayMain.length) { //last 2 conditions are to make sure you don't go past the array size
+				while (arrayMain[k] == arrayQuery[l]) { //last 2 conditions are to make sure you don't go past the array size
 					k++;
 					l++;
 					if (l == arrayQuery.length) { //if chars matched through the whole query check, increment result
-						result++;
- 						i = i + arrayQuery.length; //prevents reading a repeated query more than once in mainString
+ 						result++;
+						i = i + arrayQuery.length - 1; //prevents reading a repeated query more than once in mainString
+ 						return result;
 					}
 				}
 			}
@@ -184,29 +196,48 @@ public class StringUtility {
 		 */
 		// TODO: Implement this method
 		
-		char [] name = nameStr.toCharArray();
-		char [] firstName = null;
+		nameStr = nameStr.replaceAll("\\s+", " ");
+		String [] wordArray = nameStr.trim().split(" ");
+		String result = "";
 		
-		//find first word
-		for (int i = 0; i < name.length; i++)
-		{
-			if (name[i] != ' ') {
-				while (name[i] != ' ') {
-					firstName[i] = name[i];
-					i++;
-				}
-			}
-			else { //end of name is reached
-				firstName[i] = ',';
-				firstName[i+1] = ' ';
-				break;
-			}
+		//format first and last index array to capital first char, lowercase rest chars
+		//syntax for idea from https://stackoverflow.com/questions/3904579/how-to-capitalize-the-first-letter-of-a-string-in-java
+		if(wordArray[0] == " " || wordArray[0] == "") { //first check for empty or single spaced arrays after splitting
+			result = "";
+			return result;
 		}
-		//format first word
 		
+		String first = wordArray[0].substring(0,1).toUpperCase() + wordArray[0].substring(1).toLowerCase();
+		String last = wordArray[wordArray.length - 1].substring(0,1).toUpperCase() + wordArray[wordArray.length - 1].substring(1).toLowerCase();
 		
-		return null;
-	}
+		if (wordArray.length > 2) { //if more than one word, produce last and format
+			result = last + ", " + first + " ";
+		}
+		else if (wordArray.length == 1) {//if only first name, produce and return result
+			result = first;
+			return result;
+		}
+		else if (wordArray.length == 2) { //if only first and last name, produce and return result
+			result = last + ", " + first;
+			return result;
+		}
+		
+		for (int i = 1; i < wordArray.length - 1; i++) { //loop for middle names
+				String letter = wordArray[i].substring(0, 1).toUpperCase(); //take first letter of mid name and capitalize
+				//if last middle name found, don't insert a space after period
+				if (i == wordArray.length - 2) {
+					letter = letter.concat(".");
+					result = result + letter;
+					return result;
+				}
+				else {
+					letter = letter.concat(". ");
+					result = result + letter;
+				}
+		}
+		
+		return result;
+		}
 
 	/**
 	 * Return true iff s1 and s2 are anagrams of each other. An anagram of a
@@ -319,7 +350,27 @@ public class StringUtility {
 }
 
 
-
+/*
+		char [] name = nameStr.toCharArray();
+		char [] firstName = null;
+		
+		//find first word
+		for (int i = 0; i < name.length; i++)
+		{
+			if (name[i] != ' ') {
+				while (name[i] != ' ') {
+					firstName[i] = name[i];
+					i++;
+				}
+			}
+			else { //end of name is reached
+				firstName[i] = ',';
+				firstName[i+1] = ' ';
+				break;
+			}
+		}
+		//format first word
+ */
 
 
 
